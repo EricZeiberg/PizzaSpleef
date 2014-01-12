@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>me.masterejay</groupId>
+    <artifactId>pizzaspleef</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>Pizza Spleef</name>
+    <description>A game by SethBling</description>
+    <url>http://masterejay.us</url>
+
+    <properties>
+        <plugin.name>PizzaSpleef</plugin.name>
+        <plugin.mainClass>me.masterejay.pizzaSpleef</plugin.mainClass>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sk89q</groupId>
+            <artifactId>command-framework-core</artifactId>
+            <version>0.5-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.sk89q</groupId>
+            <artifactId>command-framework-bukkit</artifactId>
+            <version>0.5-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+</project>

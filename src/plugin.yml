@@ -1,0 +1,5 @@
+name: PizzaSpleef
+author: MasterEjzz
+version: 1.0
+main: me.masterejay.pizzaspleef.PizzaSpleef
+depend: [WorldEdit]
