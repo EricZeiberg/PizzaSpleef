@@ -12,6 +12,8 @@ import me.masterejay.pizzaspleef.commands.RegenerateCommand;
 import me.masterejay.pizzaspleef.commands.StartCommand;
 import me.masterejay.pizzaspleef.listeners.BlockBreakListener;
 import me.masterejay.pizzaspleef.listeners.ConnectionListener;
+import me.masterejay.pizzaspleef.match.MatchHandler;
+import me.masterejay.pizzaspleef.match.MatchState;
 import me.masterejay.pizzaspleef.teams.Observers;
 import me.masterejay.pizzaspleef.teams.Playing;
 import org.bukkit.ChatColor;
@@ -31,6 +33,8 @@ public class PizzaSpleef extends JavaPlugin {
     private static Observers observers = new Observers();
     public CommandsManager<CommandSender> commands;
     private static PizzaSpleef plugin;
+    private static MatchHandler handler = new MatchHandler();
+    private static MatchState state = MatchState.FINISHED;
 
     @Override
     public void onEnable(){
@@ -52,6 +56,18 @@ public class PizzaSpleef extends JavaPlugin {
 
     public static Observers getObservers(){
         return observers;
+    }
+
+    public static MatchState getState(){
+        return state;
+    }
+
+    public static void setState(MatchState matchState){
+        state = matchState;
+    }
+
+    public static MatchHandler getMatchHandler(){
+        return handler;
     }
 
     public static PizzaSpleef get(){

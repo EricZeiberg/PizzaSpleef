@@ -1,6 +1,7 @@
 package me.masterejay.pizzaspleef.listeners;
 
 import me.masterejay.pizzaspleef.PizzaSpleef;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,6 +17,7 @@ public class ConnectionListener implements Listener{
     public void onJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
         PizzaSpleef.getObservers().addObserver(p);
+        p.teleport(new Location(e.getPlayer().getWorld(), -17, 72, -69, 2, 180));
     }
 
     @EventHandler

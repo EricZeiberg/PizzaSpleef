@@ -1,5 +1,6 @@
 package me.masterejay.pizzaspleef.countdowns;
 
+import me.masterejay.pizzaspleef.match.MatchHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
@@ -12,6 +13,7 @@ public class MatchStartCountdown extends Countdown{
         Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "############");
         Bukkit.broadcastMessage(ChatColor.GREEN + "The match has started!");
         Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "############");
+        MatchHandler.start();
     }
 
     @Override

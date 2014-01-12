@@ -3,6 +3,7 @@ package me.masterejay.pizzaspleef.commands;
 import com.sk89q.minecraft.util.commands.Command;
 import com.sk89q.minecraft.util.commands.CommandContext;
 import com.sk89q.minecraft.util.commands.CommandException;
+import me.masterejay.pizzaspleef.PizzaSpleef;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -15,6 +16,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 /**
+ * This command is unused atm
  * @author MasterEjay
  */
 public class RegenerateCommand {
@@ -29,5 +31,6 @@ public class RegenerateCommand {
             throw new CommandException("Consoles can't use this command");
         }
         Player player = (Player) sender;
+        sender.sendMessage(String.valueOf(PizzaSpleef.getState()));
     }
 }
