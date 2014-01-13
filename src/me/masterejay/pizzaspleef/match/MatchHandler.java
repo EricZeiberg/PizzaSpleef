@@ -1,6 +1,8 @@
 package me.masterejay.pizzaspleef.match;
 
 import me.masterejay.pizzaspleef.PizzaSpleef;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -26,7 +28,11 @@ public class MatchHandler {
         }
     }
 
-    public static void finish(){
-
+    public static void finish(Player winner){
+        Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "############");
+        Bukkit.broadcastMessage(ChatColor.GREEN + "The match has ended!");
+        Bukkit.broadcastMessage(ChatColor.GREEN + winner.getName() + " has won!");
+        Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "############");
+        PizzaSpleef.setState(MatchState.FINISHED);
     }
 }
