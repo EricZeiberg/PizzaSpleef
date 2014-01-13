@@ -19,7 +19,7 @@ public class StartCommand{
         if (PizzaSpleef.getState() != MatchState.FINISHED ){
             throw new CommandException("The match cannot be started at this time");
         }
-        else if (PizzaSpleef.getPlaying().getPlayers().size() == 0){
+        else if (PizzaSpleef.getPlaying().getPlayers().size() < 2){
             throw new CommandException("Not enough people!");
         }
          if (cmd.argsLength() == 0){

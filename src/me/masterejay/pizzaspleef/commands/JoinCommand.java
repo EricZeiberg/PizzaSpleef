@@ -4,6 +4,7 @@ import com.sk89q.minecraft.util.commands.Command;
 import com.sk89q.minecraft.util.commands.CommandContext;
 import com.sk89q.minecraft.util.commands.CommandException;
 import me.masterejay.pizzaspleef.PizzaSpleef;
+import me.masterejay.pizzaspleef.match.MatchState;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -19,7 +20,11 @@ public class JoinCommand {
         if (sender instanceof ConsoleCommandSender){
             throw new CommandException("Consoles can't use this command");
         }
-       Player player = (Player) sender;
+
+        else if (PizzaSpleef.getState() == MatchState.PLAYING){
+            throw new CommandException("Match is going! You can't join!");
+        }
+        Player player = (Player) sender;
       if (PizzaSpleef.getObservers().isPlayerObserving(player)){
           PizzaSpleef.getObservers().removeObserver(player);
           PizzaSpleef.getPlaying().addPlaying(player);

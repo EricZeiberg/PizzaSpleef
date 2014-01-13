@@ -13,6 +13,7 @@ import me.masterejay.pizzaspleef.commands.StartCommand;
 import me.masterejay.pizzaspleef.listeners.BlockBreakListener;
 import me.masterejay.pizzaspleef.listeners.ConnectionListener;
 import me.masterejay.pizzaspleef.listeners.DeathListener;
+import me.masterejay.pizzaspleef.listeners.MiscListener;
 import me.masterejay.pizzaspleef.match.MatchHandler;
 import me.masterejay.pizzaspleef.match.MatchState;
 import me.masterejay.pizzaspleef.teams.Observers;
@@ -43,6 +44,7 @@ public class PizzaSpleef extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ConnectionListener(), this);
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new DeathListener(), this);
+        getServer().getPluginManager().registerEvents(new MiscListener(), this);
         setupCommands();
         plugin = this;
         if (getServer().getOnlinePlayers().length > 0){

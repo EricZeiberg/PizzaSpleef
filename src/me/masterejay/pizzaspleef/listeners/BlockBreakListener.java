@@ -29,21 +29,21 @@ public class BlockBreakListener implements Listener {
         else if (e.getBlock().getType() == Material.OBSIDIAN){
             for (Player p : PizzaSpleef.getPlaying().getPlayers()){
                 if (p != e.getPlayer()){
-                    p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 7, 0));
+                    p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 7*20, 0));
                     p.sendMessage(ChatColor.RED + "You have been blinded by " + e.getPlayer().getName());
                 }
             }
         }
         else if (e.getBlock().getType() == Material.REDSTONE_BLOCK){
-            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 5, 1));
+            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 5*20, 1));
             e.getPlayer().sendMessage(ChatColor.GREEN + "You have gained a speed boost");
         }
         else if (e.getBlock().getType() == Material.WOOL){
-            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 10, 5));
+            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 10*20, 5));
             e.getPlayer().sendMessage(ChatColor.GREEN + "You have gained a jump boost");
         }
         else if (e.getBlock().getType() == Material.IRON_BLOCK){
-            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 10, 0));
+            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 10*20, 0));
             e.getPlayer().sendMessage(ChatColor.GREEN + "You have become invisible!");
         }
         else if (e.getBlock().getType() == Material.WOOD){
@@ -57,7 +57,7 @@ public class BlockBreakListener implements Listener {
             ItemStack i = new ItemStack(Material.POTION);
             i.setAmount(3);
             PotionMeta meta = (PotionMeta) i.getItemMeta();
-            meta.addCustomEffect(new PotionEffect(PotionEffectType.SLOW, 15, 0), true);
+            meta.addCustomEffect(new PotionEffect(PotionEffectType.SLOW, 15*20, 0), true);
             i.setItemMeta(meta);
             e.getPlayer().sendMessage(ChatColor.GREEN + "You have gotten some slow bombs!");
         }
