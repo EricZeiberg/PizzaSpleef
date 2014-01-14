@@ -18,7 +18,11 @@ import me.masterejay.pizzaspleef.match.MatchHandler;
 import me.masterejay.pizzaspleef.match.MatchState;
 import me.masterejay.pizzaspleef.teams.Observers;
 import me.masterejay.pizzaspleef.teams.Playing;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.WorldCreator;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -51,6 +55,10 @@ public class PizzaSpleef extends JavaPlugin {
             for (Player p : getServer().getOnlinePlayers()){
                 getObservers().addObserver(p);
             }
+        }
+        World w = Bukkit.getServer().createWorld(new WorldCreator("Lobby"));
+        for (Player p : getServer().getOnlinePlayers()){
+            p.teleport(new Location(w, -17, 72, -69, 2, 180));
         }
     }
 

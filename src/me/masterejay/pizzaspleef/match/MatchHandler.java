@@ -1,16 +1,25 @@
 package me.masterejay.pizzaspleef.match;
 
 import me.masterejay.pizzaspleef.PizzaSpleef;
+import me.masterejay.pizzaspleef.countdowns.Countdown;
+import me.masterejay.pizzaspleef.countdowns.CountdownMethods;
+import me.masterejay.pizzaspleef.countdowns.RollbackCountdown;
+import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Chunk;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.WorldCreator;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * @author MasterEjay
@@ -42,11 +51,9 @@ public class MatchHandler {
             double x = (Math.random() * (max * 2)) - max;
             double y = 0;
             double z = (Math.random() * (max * 2)) - max;
-            int x1 = (int) x;
-            int z1 = (int) z;
             double center_x = -17;
             int center_z = -13;
-            if (Math.pow(x - center_x, 2) + Math.pow(z1 - center_z, 2) < Math.pow(radius, 2)){
+            if (Math.pow(x - center_x, 2) + Math.pow(z - center_z, 2) < Math.pow(radius, 2)){
                 loc = new Location(world, x, y, z);
                 return loc;
             }
@@ -65,5 +72,28 @@ public class MatchHandler {
         PizzaSpleef.setState(MatchState.FINISHED);
         PizzaSpleef.getPlaying().removePlaying(winner);
         PizzaSpleef.getObservers().addObserver(winner);
+        winner.getInventory().clear();
+        winner.getActivePotionEffects().clear();
+        CountdownMethods.start(new RollbackCountdown(), 15);
+
+    }
+
+    //Unloading maps, to rollback maps. Will delete all player builds until last server save
+    public static void unloadMap(String mapname){
+        if(Bukkit.getServer().unloadWorld(Bukkit.getServer().getWorld(mapname), false)){
+            PizzaSpleef.get().getLogger().info("Successfully unloaded " + mapname);
+        }else{
+            PizzaSpleef.get().getLogger().severe("COULD NOT UNLOAD " + mapname);
+        }
+    }
+    //Loading maps (MUST BE CALLED AFTER UNLOAD MAPS TO FINISH THE ROLLBACK PROCESS)
+    public static void loadMap(String mapname){
+        Bukkit.getServer().createWorld(new WorldCreator(mapname));
+    }
+
+    //Maprollback method, because were too lazy to type 2 lines
+    public static void rollback(String mapname){
+        unloadMap(mapname);
+        loadMap(mapname);
     }
 }

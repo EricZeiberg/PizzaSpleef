@@ -17,7 +17,7 @@ public class ConnectionListener implements Listener{
     public void onJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
         PizzaSpleef.getObservers().addObserver(p);
-        p.teleport(new Location(e.getPlayer().getWorld(), -17, 72, -69, 2, 180));
+        p.teleport(new Location(PizzaSpleef.get().getServer().getWorld("Lobby"), -17, 72, -69, 2, 180));
     }
 
     @EventHandler
