@@ -36,6 +36,7 @@ public class MatchHandler {
             meta.addEnchant(Enchantment.DIG_SPEED, 10, true);
             meta.addEnchant(Enchantment.DURABILITY, 5, true);
             pickaxe.setItemMeta(meta);
+            p.getInventory().clear();
             p.getInventory().addItem(pickaxe);
             Location location = p.getLocation();
             Location loc1 = location.add(genSpawn(p.getWorld()));

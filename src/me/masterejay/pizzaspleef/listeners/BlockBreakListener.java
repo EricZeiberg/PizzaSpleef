@@ -2,6 +2,7 @@ package me.masterejay.pizzaspleef.listeners;
 
 import me.masterejay.pizzaspleef.PizzaSpleef;
 import me.masterejay.pizzaspleef.match.MatchState;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -34,6 +35,7 @@ public class BlockBreakListener implements Listener {
                     p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 7*20, 0));
                     p.sendMessage(ChatColor.RED + "You have been blinded by " + e.getPlayer().getName());
                 }
+                p.sendMessage(ChatColor.GREEN + "You have blinded everyone!" );
             }
         }
         else if (e.getBlock().getType() == Material.GOLD_BLOCK){
@@ -43,10 +45,11 @@ public class BlockBreakListener implements Listener {
                     p.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 100*8333, 0));
                     p.sendMessage(ChatColor.RED + "You have been nauseated by " + e.getPlayer().getName());
                 }
+                p.sendMessage(ChatColor.GREEN + "You have nauseated everyone!");
             }
         }
         else if (e.getBlock().getType() == Material.REDSTONE_BLOCK){
-            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 5*20, 1));
+            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 5 * 20, 1));
             e.getPlayer().sendMessage(ChatColor.GREEN + "You have gained a speed boost");
             e.getBlock().getDrops().clear();
         }
@@ -59,7 +62,7 @@ public class BlockBreakListener implements Listener {
             e.getBlock().getDrops().clear();
         }
         else if (e.getBlock().getType() == Material.IRON_BLOCK){
-            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 10*20, 0));
+            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 10 * 20, 0));
             e.getPlayer().sendMessage(ChatColor.GREEN + "You have become invisible!");
             e.getBlock().getDrops().clear();
         }
@@ -73,6 +76,7 @@ public class BlockBreakListener implements Listener {
         }
         else if (e.getBlock().getType() == Material.SOUL_SAND){
             ItemStack i = new ItemStack(Material.POTION);
+            i.setDurability((short) 16426);
             i.setAmount(3);
             PotionMeta meta = (PotionMeta) i.getItemMeta();
             meta.addCustomEffect(new PotionEffect(PotionEffectType.SLOW, 15*20, 0), true);
