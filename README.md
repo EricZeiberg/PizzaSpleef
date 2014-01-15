@@ -14,5 +14,5 @@ This plugin and source code are free to use, as long as you give me (MasterEjay 
 All rights are reserved
 
 **How to use**
-Place the world provided in your server folder, and name it Lobby. Make sure you have a main world already set up, or else the plugin will not roll back the wold properly. 
+Place the world provided in your server folder, and name it "Lobby". Make sure you have a main world already set up, or else the plugin will not roll back the wold properly. Then, duplicate the Lobby world, and name it "Lobby - Copy".
 After that, you should be all set to go!
